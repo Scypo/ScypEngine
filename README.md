@@ -15,7 +15,9 @@ No complex build system required — just drop in the header and start coding.
 
 ## 📥 Installation
 
-Clone or download the repository, then simply include the engine header:
+Clone or download the [ScypLib](https://github.com/youruser/ScypLib)
+ repository and follow its installation instructions.
+Once ScypLib is set up, you can include the ScypEngine header in your project:
 
 ```cpp
 #include <ScypEngine/ScypEngine.h>
