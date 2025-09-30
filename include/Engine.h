@@ -37,24 +37,11 @@ namespace se
             mouse = new sl::Mouse;
             keyboard = new sl::Keyboard;
             ed = new sl::EventDispatcher(keyboard, mouse, window);
-            ed->SetupCallbacks(window->GetGLFWWindow());
             ecs = new sl::EntityComponentSystem;
-
-            game->OnBegin();
-            running = true;
-        }
-
-        template<typename TGame>
-        static inline void CreateGame()
-        {
-            game = std::make_unique<TGame>();
         }
 
         static inline void Shutdown()
         {
-            game->OnEnd();
-            game.reset();
-
             delete graphics; graphics = nullptr;
             delete audio;    audio = nullptr;
             delete window;   window = nullptr;
@@ -64,18 +51,31 @@ namespace se
             delete ecs;      ecs = nullptr;
         }
 
+        static inline void Quit()
+        {
+            Engine::running = true;
+        }
+
+        template<typename Game>
         static inline void Run()
         {
-            while (running && window->IsRunning())
+            game = std::make_unique<Game>();
+            Engine::running = true;
+            game.get()->OnBegin();
+
+            while ( Engine::running && window->IsRunning())
             {
                 float dt = frameTimer.Mark();
                 ed->PollEvents();
 
                 graphics->BeginFrame();
-                game->OnUpdate(dt);
                 ecs->GetCurrentScene()->RunSystems(dt);
+                game->OnUpdate(dt);
                 graphics->EndFrame();
             }
+
+            game.get()->OnEnd();
+            game.reset();
         }
 
         static inline sl::Graphics& GetGraphics() { return *graphics; }
