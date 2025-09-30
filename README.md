@@ -37,7 +37,7 @@ public:
 
     void OnUpdate(float dt) override
     {
-        // Game loop logic here
+        // Additional game loop logic here
     }
 
     void OnEnd() override
@@ -48,9 +48,8 @@ public:
 
 int main()
 {
-    se::Engine::CreateGame<MyGame>();
-    se::Engine::Init(600, 800, "My Game");
-    se::Engine::Run();
+    se::Engine::Init(600, 800, "Game");
+    se::Engine::Run<se::Game>();
     se::Engine::Shutdown();
 }
 ```
