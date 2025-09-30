@@ -1,6 +1,6 @@
 # 🚀 ScypEngine
 
-A lightweight **header-only 2D engine framework** built on top of [ScypLib](https://github.com/youruser/ScypLib).  
+A lightweight **header-only 2D engine framework** built on top of [ScypLib](https://github.com/Scypo/ScypLib).  
 No complex build system required — just drop in the header and start coding.
 
 ---
@@ -15,7 +15,7 @@ No complex build system required — just drop in the header and start coding.
 
 ## 📥 Installation
 
-Clone or download the [ScypLib](https://github.com/youruser/ScypLib)
+Clone or download the [ScypLib](https://github.com/Scypo/ScypLib)
  repository and follow its installation instructions.
 Once ScypLib is set up, you can include the ScypEngine header in your project:
 
